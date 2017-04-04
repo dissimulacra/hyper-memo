@@ -1,3 +1,5 @@
 *.pyc
 *.json
 misc/.ipynb_checkpoints/
+.DS_Store
+knowledge/.DS_Store
