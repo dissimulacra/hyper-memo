@@ -5,55 +5,45 @@ class MemoryBlock(object):
 	MinimumEFactor = 1.3
 	InitialEFactor = 2.5
 
-	def __init__(self, content_q, content_a, importance=1.0):
-		self.content_q         = content_q
-		self.content_a         = content_a
+	def __init__(self):
+		self.redundid = None
+		self.question = None
+		self.response = None
 
-		self.e_factor          = InitialEFactor
-		self.importance        = importance
-		self.interval          = 0
-		self.repetition        = 0
+		self.e_factor = InitialEFactor
+		self.priority = 1.0
+		self.interval = 0
+		self.repetits = 0
+		self.start_ts = 0
 
-		#self.remaining_time_ms = 0
-		self.interval_start_ts = 0
+		# self.history           = {'responses':            [],
+		# 						  'calculated_intervals': [],
+		# 						  'calculated_efactors':  [],
+		# 						  'review_dates':         []}
 
-		self.history           = {'responses':            [],
-								  'calculated_intervals': [],
-								  'calculated_efactors':  [],
-								  'review_dates':         []}
 
-	def edit_content_factors(self, content_q=None, content_a=None, importance=None):
-		if content_q:
-			self.content_q  = content_q
-		if content_a:
-			self.content_a  = content_a
-		if importance:
-			self.importance = importance
 
-	def show_content_q(self):
+	def show_question(self):
 		# override for sophisticated blocks
-		print self.content_q
+		print self.question
 
-	def show_content_a(self):
+	def show_response(self):
 		# override for sophisticated blocks
-		print self.content_a
+		print self.response
 
-	def update_memory_factors(self, response_quality): # TODO: add noise when extending
-		# override for sophisticated blocks
-		self.repetition += 1
-		q  = response_quality
-		EF = self.e_factor
+	def inspect_block(self):
+		# rarely used outside of writing db-push data
+		internal_state = {k:v for }
 
-		self.e_factor   = min(MinimumEFactor, 
-			                  (EF + (0.1 - (5.0 - q) * (0.08 + (5.0 - q) * 0.02))) / self.importance)
+	def initize_block(self):
+		# rarely used outside of storing db-pull data
+		pass
 
-		if self.repetition == 1 or  q < 3: # I(1) := 1
-			self.interval = 1
-		if self.repetition == 2 and q > 2: # I(2) := 2
-			self.interval = 2
-		if self.repetition >= 3 and q > 2: # I(n) := I(n-1) * EF
-			self.interval = self.interval * self.e_factor
+	def update_memory(self, e_factor, interval):
 
-		self.interval_start_ts = 0
+		self.repetits += 1
+		self.e_factor  = e_factor
+		self.interval  = interval
+		self.start_ts  = # timestamp
 
 		# update self.history fields -> TODO: instead do a change record
