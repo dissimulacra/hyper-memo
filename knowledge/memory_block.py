@@ -2,7 +2,6 @@ import numpy as np
 
 class MemoryBlock(object):
 
-	MinimumEFactor = 1.3
 	InitialEFactor = 2.5
 
 	def __init__(self):
@@ -39,10 +38,10 @@ class MemoryBlock(object):
 		# rarely used outside of storing db-pull data
 		pass
 
-	def update_memory(self, e_factor, interval):
+	def update_memory(self, e_factor, interval, repetits):
 
-		self.repetits += 1
-		self.e_factor  = e_factor
+		self.repetits  = repetits
+		self.e_factor  = e_factor / self.priority
 		self.interval  = interval
 		self.start_ts  = # timestamp
 
