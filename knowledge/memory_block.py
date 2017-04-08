@@ -41,7 +41,7 @@ class MemoryBlock(object):
 	def update_memory(self, e_factor, interval, repetits):
 
 		self.repetits  = repetits
-		self.e_factor  = e_factor / self.priority
+		self.e_factor  = e_factor
 		self.interval  = interval
 		self.start_ts  = # timestamp
 

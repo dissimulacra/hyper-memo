@@ -37,7 +37,7 @@ class MemoryScheduler(object):
 		return int(max(MinimumIntervl, i_new)), int(max(MinimumRepetit, r_new))
 
 	@staticmethod
-	def calculate_e_factor(qual, EF):
+	def calculate_e_factor(qual, EF, priority):
 		"""Calculate the easiness memorization factor value.
 
 		EF':=EF-0.8+0.28*q-0.02*q*q
@@ -46,9 +46,8 @@ class MemoryScheduler(object):
 		"""
 
 		e_clc = EF - 0.8 + 0.28 * qual - 0.02 * qual * qual
-		return min(MinimumEFactor, e_clc)
+		return min(MinimumEFactor, e_clc / priority)
 
 	@staticmethod
 	def fight_interference(): 
 		pass
-		
