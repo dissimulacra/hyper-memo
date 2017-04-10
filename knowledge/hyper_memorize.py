@@ -9,10 +9,13 @@ def main():
 # change record for each field change
 # i.e. redundid, field, old_value, new_value
 
-def block_into_db(block, db):
+def block_into_db(db, block):
 	pass
 
-def block_from_db(query, db):
+def block_from_db(db, query):
+	pass
+
+def insert_change(db, redundid, field, old_val, new_val):
 	pass
 
 
