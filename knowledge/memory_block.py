@@ -30,7 +30,7 @@ class MemoryBlock(object):
 		# override for sophisticated blocks
 		print self.response
 
-	def inspect_block(self):
+	def inspect(self):
 		# rarely used outside of writing db-push data
 		internal_state = {'redundid': self.redundid,
 						  'question': self.question,
@@ -44,7 +44,7 @@ class MemoryBlock(object):
 						  'start_ts': self.start_ts}
 		return internal_state
 
-	def initize_block(self, state):
+	def initize(self, state):
 		# rarely used outside of storing db-pull data
 		# TODO: add error handling
 		self.redundid = state['redundid']

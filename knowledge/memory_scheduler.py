@@ -50,4 +50,5 @@ class MemoryScheduler(object):
 
 	@staticmethod
 	def fight_interference(): 
+		# TODO: simple correlation to fight simultaneous decrease in EF among card pairs
 		pass
