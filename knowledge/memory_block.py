@@ -17,11 +17,6 @@ class MemoryBlock(object):
 		self.interval = 0
 		self.start_ts = 0
 
-		# self.history           = {'responses':            [],
-		# 						  'calculated_intervals': [],
-		# 						  'calculated_efactors':  [],
-		# 						  'review_dates':         []}
-
 	def show_question(self):
 		# override for sophisticated blocks
 		print self.question
@@ -64,5 +59,3 @@ class MemoryBlock(object):
 		self.e_factor  = e_factor
 		self.interval  = interval
 		self.start_ts  = int(time.time())
-
-		# update self.history fields -> TODO: instead do a change record
