@@ -1,4 +1,5 @@
 import numpy as np
+import random
 import re
 import time
 import tinydb
@@ -31,6 +32,14 @@ def main():
 	# TODO: proper directory structure
 
 	# TODO: jupyter notebook to do direct db exploration
+
+	# TODO: interleave different topics together for more random learning
+
+	# TODO: multiple level review rotation? for instance multi example answers rotated each time, to prevent overfitting
+
+	# TODO: convolutional neural net fed picture of text and spits out exact text, spaces, color?
+
+	# TODO: system randomly and automatically surveys you, i.e. "is this card really useful?", to help with retirement
 
 
 
@@ -79,6 +88,7 @@ def block_for_now(db, ts):
 				memblock = MemoryBlock()
 				memblock.initize(block_info)
 				today_blocks.append(memblock)
+	random.shuffle(today_blocks)
 	return today_blocks
 
 def insert_change(db, block_id, field, old_val, new_val):
