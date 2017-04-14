@@ -42,16 +42,24 @@ class MemoryBlock(object):
 	def initize(self, state):
 		# rarely used outside of storing db-pull data
 		# TODO: add error handling
-		self.redundid = state['redundid']
-		self.question = state['question']
-		self.response = state['response']
+		try:
+			fields = ['redundid', 'question', 'response', 'priority',
+					  'repetits', 'e_factor', 'interval', 'start_ts']
+			for field in fields:
+				state[field]
+		except KeyError:
+			print "Not all required fields are present!"
+		else:
+			self.redundid = state['redundid']
+			self.question = state['question']
+			self.response = state['response']
 		
-		self.priority = state['priority']
+			self.priority = state['priority']
 		
-		self.repetits = state['repetits']
-		self.e_factor = state['e_factor']
-		self.interval = state['interval']
-		self.start_ts = state['start_ts']
+			self.repetits = state['repetits']
+			self.e_factor = state['e_factor']
+			self.interval = state['interval']
+			self.start_ts = state['start_ts']
 
 	def update_memory(self, e_factor, interval, repetits):
 

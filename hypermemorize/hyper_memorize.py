@@ -1,18 +1,29 @@
 import numpy as np
+import re
 import time
 import tinydb
 
 def main():
 	print "starting up..."
 	dbs = map(lambda s: s.lower(), available_dbs())
-	print "specify db or make [new] one: "
+	print "specify [db] or make a new one by typing a new name: "
 	for db in dbs:
 		print db
-	print '[new]'
 	db_choice = raw_input('--> ').lower()
+	db_string = None
 
-	# TODO: catch naming errors here, mention if existing or new one is being created
-	db = TinyDB(db_choice+'.json')
+	check = '[a-zA-Z_][a-zA-Z0-9_]*'
+	if (len(re.findall(check, db_choice)) != 1) or (re.findall(check, db_choice) != db_choice):
+		raise NameError('Not a valid name!')
+	else: 
+		db_string = db_choice + '.json'
+		if db_string in os.listdir('.'):
+			print 'Loading ' + db_string + ', coming right up!'
+		else:
+			print 'Creating a new db called ' + db_string + ', coming right up!'
+	# FUTURE: this might be an opaque process automatically managed depending on knowledge type
+	db = TinyDB(db_string)
+
 	# TODO: print summary statistics about db
 
 	# TODO: perpetuate db to tmp folder backup storage before closing program
@@ -48,7 +59,6 @@ def block_into_db(db, block):
 		for new_key, new_val in new_block.items():
 			if old_block[new_key] not new_val:
 				insert_change(db, redundid, new_key, old_block[new_key], new_val)
-		# QUESTION: incremental changes, or big change?
 		db.update(new_block, Block.redundid == redundid)
 	else:
 		db.insert(record)
