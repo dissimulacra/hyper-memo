@@ -41,6 +41,18 @@ def main():
 
 	# TODO: system randomly and automatically surveys you, i.e. "is this card really useful?", to help with retirement
 
+	# TODO: special format cards: in how to measure anything, we do confidence interval calibration
+	# by having a bank of pre-known distributions (normal) and then the card asks to estimate the 
+	# upper and lower bound (reminding of bet and other strategies), and keeps track of calibration 
+	# over time; random distribution given each time; expected value of perfect information;
+	# different special rules for small sized sampling
+
+	# TODO: special format cards: for mental math, random problems generated for selected techniques 
+	# with interactive hints given out when appropriate to remind of shortcut strategies
+
+	# TODO: look into ways of storing time series data in databases, such as the following:
+	# https://www.mongodb.com/blog/post/schema-design-for-time-series-data-in-mongodb
+
 
 
 def available_dbs(directory='.'):
