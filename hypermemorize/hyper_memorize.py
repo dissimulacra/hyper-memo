@@ -53,6 +53,10 @@ def main():
 	# TODO: look into ways of storing time series data in databases, such as the following:
 	# https://www.mongodb.com/blog/post/schema-design-for-time-series-data-in-mongodb
 
+	# PRIORITY TODO: since developing different learning schemes and database ingestion will
+	# take some time, focus on the (1) scheduling algorithm (2) factor calculation and disrupting 
+	# learning interference and (3) the testing procedure and game playing process
+
 
 
 def available_dbs(directory='.'):
@@ -119,3 +123,4 @@ def insert_resp_q(db, block_id, qual):
 
 if __name__ == '__main__':
 	main()
+	

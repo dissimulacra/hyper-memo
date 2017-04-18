@@ -1,6 +1,10 @@
 import numpy as np
 
 class MemoryScheduler(object):
+	"""Deals with e factor calculation, intervals, interference.
+
+	Relies on the SuperMemo original SM2 algorithm.
+	"""
 
 	MinimumEFactor = 1.3
 	MinimumIntervl = 1
