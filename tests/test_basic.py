@@ -11,6 +11,9 @@ import unittest
 # test procedure methods (db insertion, search...)
 
 
+# REMINDER: add striding function to flash card
+
+
 
 
 
